@@ -214,6 +214,7 @@ if __name__ == "__main__":
         "meta-llama/Llama-3.1-8B-evals",
         "meta-llama/Llama-3.1-70B-evals",
         "meta-llama/Llama-3.1-405B-evals",
+        "meta-llama/Llama-3.2-1B-evals"
     ]:
         raise ValueError(
             "The evals dataset is not valid, please double check the name, must use the name in the Llama 3.1 Evals collection"

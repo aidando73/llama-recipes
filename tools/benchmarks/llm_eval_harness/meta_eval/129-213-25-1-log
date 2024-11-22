@@ -1,0 +1,58 @@
+Fri Nov 22 04:42:12 UTC 2024 - running command: lm_eval --model vllm --model_args pretrained=meta-llama/Llama-3.2-1B,tensor_parallel_size=1,dtype=auto,gpu_memory_utilization=0.9,data_parallel_size=1,max_model_len=8192,add_bos_token=True,seed=42 --tasks meta_pretrain --batch_size auto --output_path eval_results --include_path /home/ubuntu/us-east-1/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir --seed 42 --log_samples
+nohup: ignoring input
+2024-11-22:04:42:40,932 INFO     [__main__.py:272] Verbosity set to INFO
+2024-11-22:04:42:40,932 INFO     [__main__.py:303] Including path: /home/ubuntu/us-east-1/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir
+2024-11-22:04:42:52,938 INFO     [__main__.py:369] Selected Tasks: ['meta_pretrain']
+2024-11-22:04:42:52,945 INFO     [evaluator.py:152] Setting random seed to 42 | Setting numpy seed to 42 | Setting torch manual seed to 42
+2024-11-22:04:42:52,945 INFO     [evaluator.py:189] Initializing vllm model, with arguments: {'pretrained': 'meta-llama/Llama-3.2-1B', 'tensor_parallel_size': 1, 'dtype': 'auto', 'gpu_memory_utilization': 0.9, 'data_parallel_size': 1, 'max_model_len': 8192, 'add_bos_token': True, 'seed': 42}
+INFO 11-22 04:43:04 config.py:350] This model supports multiple tasks: {'generate', 'embedding'}. Defaulting to 'generate'.
+INFO 11-22 04:43:04 llm_engine.py:249] Initializing an LLM engine (v0.6.4.post1) with config: model='meta-llama/Llama-3.2-1B', speculative_config=None, tokenizer='meta-llama/Llama-3.2-1B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=8192, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='outlines'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=42, served_model_name=meta-llama/Llama-3.2-1B, num_scheduler_steps=1, chunked_prefill_enabled=False multi_step_stream_outputs=True, enable_prefix_caching=False, use_async_output_proc=True, use_cached_outputs=False, chat_template_text_format=string, mm_processor_kwargs=None, pooler_config=None)
+INFO 11-22 04:43:07 selector.py:135] Using Flash Attention backend.
+INFO 11-22 04:43:07 model_runner.py:1072] Starting to load model meta-llama/Llama-3.2-1B...
+INFO 11-22 04:43:08 weight_utils.py:243] Using model weights format ['*.safetensors']
+INFO 11-22 04:47:05 weight_utils.py:288] No model.safetensors.index.json found in remote.
+Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:13<00:00, 13.97s/it]
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:13<00:00, 13.97s/it]
+
+INFO 11-22 04:47:19 model_runner.py:1077] Loading model weights took 2.3185 GB
+INFO 11-22 04:47:20 worker.py:232] Memory profiling results: total_gpu_memory=39.38GiB initial_memory_usage=2.82GiB peak_torch_memory=3.52GiB memory_usage_post_profile=2.84GiB non_torch_memory=0.51GiB kv_cache_size=31.41GiB gpu_memory_utilization=0.90
+INFO 11-22 04:47:20 gpu_executor.py:113] # GPU blocks: 64324, # CPU blocks: 8192
+INFO 11-22 04:47:20 gpu_executor.py:117] Maximum concurrency for 8192 tokens per request: 125.63x
+INFO 11-22 04:47:24 model_runner.py:1400] Capturing cudagraphs for decoding. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI.
+INFO 11-22 04:47:24 model_runner.py:1404] If out-of-memory error occurs during cudagraph capture, consider decreasing `gpu_memory_utilization` or switching to eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+INFO 11-22 04:47:35 model_runner.py:1518] Graph capturing finished in 11 secs, took 0.14 GiB
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/bin/lm_eval", line 8, in <module>
+[rank0]:     sys.exit(cli_evaluate())
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/__main__.py", line 375, in cli_evaluate
+[rank0]:     results = evaluator.simple_evaluate(
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/utils.py", line 395, in _wrapper
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/evaluator.py", line 221, in simple_evaluate
+[rank0]:     task_dict = get_task_dict(tasks, task_manager)
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/tasks/__init__.py", line 444, in get_task_dict
+[rank0]:     task_name_from_string_dict = task_manager.load_task_or_group(
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/tasks/__init__.py", line 287, in load_task_or_group
+[rank0]:     collections.ChainMap(*map(self._load_individual_task_or_group, task_list))
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/tasks/__init__.py", line 270, in _load_individual_task_or_group
+[rank0]:     **dict(collections.ChainMap(*map(fn, subtask_list))),
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/tasks/__init__.py", line 178, in _load_individual_task_or_group
+[rank0]:     return load_task(task_config, task=name_or_config, group=parent_name)
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/tasks/__init__.py", line 167, in load_task
+[rank0]:     task_object = ConfigurableTask(config=config)
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/api/task.py", line 810, in __init__
+[rank0]:     self.download(self.config.dataset_kwargs)
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/api/task.py", line 917, in download
+[rank0]:     self.dataset = datasets.load_dataset(
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/datasets/load.py", line 2132, in load_dataset
+[rank0]:     builder_instance = load_dataset_builder(
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/datasets/load.py", line 1890, in load_dataset_builder
+[rank0]:     builder_instance: DatasetBuilder = builder_cls(
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/datasets/builder.py", line 342, in __init__
+[rank0]:     self.config, self.config_id = self._create_builder_config(
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/datasets/builder.py", line 569, in _create_builder_config
+[rank0]:     raise ValueError(
+[rank0]: ValueError: BuilderConfig 'Llama-3.2-1B-evals__bbh__details' not found. Available: ['Llama-3.2-1B-evals__agieval_english__details', 'Llama-3.2-1B-evals__arc_challenge__details', 'Llama-3.2-1B-evals__drop__details', 'Llama-3.2-1B-evals__metrics', 'Llama-3.2-1B-evals__mmlu__details', 'Llama-3.2-1B-evals__multi_needle__details', 'Llama-3.2-1B-evals__needle_in_haystack__details', 'Llama-3.2-1B-evals__quac__details', 'Llama-3.2-1B-evals__squad__details']
+[rank0]:[W1122 04:47:39.866318030 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+end: Fri Nov 22 04:47:41 UTC 2024
