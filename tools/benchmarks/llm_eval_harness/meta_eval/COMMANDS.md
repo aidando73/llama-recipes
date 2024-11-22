@@ -1,5 +1,18 @@
 
 ```bash
+cd $STORAGE_DIR/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval
+```
+
+```bash
+source $STORAGE_DIR/llama-recipes/.venv/bin/activate
+```
+
+```bash
+huggingface-cli login
+```
+
+
+```bash
 python prepare_meta_eval.py --config_path ./eval_config.yaml
 ```
 
@@ -42,4 +55,15 @@ run_nohup lm_eval --model vllm \
     --batch_size 8 \
     --log_samples \
     --limit 5
+```
+
+```bash
+run_nohup lm_eval --model vllm \
+  --model_args pretrained=meta-llama/Llama-3.2-1B,tensor_parallel_size=1,dtype=auto,gpu_memory_utilization=0.9,data_parallel_size=1,max_model_len=8192,add_bos_token=True,seed=42 \
+  --tasks meta_pretrain \
+  --batch_size auto \
+  --output_path eval_results \
+  --include_path $STORAGE_DIR/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir \
+  --seed 42  \
+  --log_samples
 ```
