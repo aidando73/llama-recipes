@@ -1,0 +1,41 @@
+Fri Nov 22 10:40:08 UTC 2024 - running command: lm_eval --model vllm --model_args pretrained=meta-llama/Llama-3.2-1B --tasks mmlu_abstract_algebra --num_fewshot 5 --output_path eval_results --device cuda:0 --batch_size 8 --log_samples --limit 5
+nohup: ignoring input
+2024-11-22:10:40:21,748 INFO     [__main__.py:272] Verbosity set to INFO
+2024-11-22:10:40:33,111 WARNING  [__main__.py:312]  --limit SHOULD ONLY BE USED FOR TESTING.REAL METRICS SHOULD NOT BE COMPUTED USING LIMIT.
+2024-11-22:10:40:33,112 INFO     [__main__.py:369] Selected Tasks: ['mmlu_abstract_algebra']
+2024-11-22:10:40:33,120 INFO     [evaluator.py:152] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234
+2024-11-22:10:40:33,120 INFO     [evaluator.py:189] Initializing vllm model, with arguments: {'pretrained': 'meta-llama/Llama-3.2-1B'}
+INFO 11-22 10:40:42 config.py:350] This model supports multiple tasks: {'embedding', 'generate'}. Defaulting to 'generate'.
+WARNING 11-22 10:40:42 arg_utils.py:1013] Chunked prefill is enabled by default for models with max_model_len > 32K. Currently, chunked prefill might not work with some features or models. If you encounter any issues, please disable chunked prefill by setting --enable-chunked-prefill=False.
+INFO 11-22 10:40:42 config.py:1136] Chunked prefill is enabled with max_num_batched_tokens=512.
+INFO 11-22 10:40:42 llm_engine.py:249] Initializing an LLM engine (v0.6.4.post1) with config: model='meta-llama/Llama-3.2-1B', speculative_config=None, tokenizer='meta-llama/Llama-3.2-1B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=131072, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='outlines'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=1234, served_model_name=meta-llama/Llama-3.2-1B, num_scheduler_steps=1, chunked_prefill_enabled=True multi_step_stream_outputs=True, enable_prefix_caching=False, use_async_output_proc=True, use_cached_outputs=False, chat_template_text_format=string, mm_processor_kwargs=None, pooler_config=None)
+INFO 11-22 10:40:42 selector.py:135] Using Flash Attention backend.
+INFO 11-22 10:40:43 model_runner.py:1072] Starting to load model meta-llama/Llama-3.2-1B...
+INFO 11-22 10:40:43 weight_utils.py:243] Using model weights format ['*.safetensors']
+INFO 11-22 10:40:43 weight_utils.py:288] No model.safetensors.index.json found in remote.
+Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.84s/it]
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.84s/it]
+
+INFO 11-22 10:40:45 model_runner.py:1077] Loading model weights took 2.3185 GB
+INFO 11-22 10:40:46 worker.py:232] Memory profiling results: total_gpu_memory=39.38GiB initial_memory_usage=2.82GiB peak_torch_memory=3.49GiB memory_usage_post_profile=2.84GiB non_torch_memory=0.51GiB kv_cache_size=31.44GiB gpu_memory_utilization=0.90
+INFO 11-22 10:40:46 gpu_executor.py:113] # GPU blocks: 64382, # CPU blocks: 8192
+INFO 11-22 10:40:46 gpu_executor.py:117] Maximum concurrency for 131072 tokens per request: 7.86x
+INFO 11-22 10:40:49 model_runner.py:1400] Capturing cudagraphs for decoding. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI.
+INFO 11-22 10:40:49 model_runner.py:1404] If out-of-memory error occurs during cudagraph capture, consider decreasing `gpu_memory_utilization` or switching to eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+INFO 11-22 10:41:00 model_runner.py:1518] Graph capturing finished in 11 secs, took 0.14 GiB
+2024-11-22:10:41:03,064 WARNING  [evaluator.py:251] Overwriting default num_fewshot of mmlu_abstract_algebra from None to 5
+2024-11-22:10:41:03,064 INFO     [evaluator.py:261] Setting fewshot random generator seed to 1234
+2024-11-22:10:41:03,065 INFO     [task.py:411] Building contexts for mmlu_abstract_algebra on rank 0...
+  0%|          | 0/5 [00:00<?, ?it/s]100%|██████████| 5/5 [00:00<00:00, 110.70it/s]
+2024-11-22:10:41:03,114 INFO     [evaluator.py:438] Running loglikelihood requests
+Running loglikelihood requests:   0%|          | 0/20 [00:00<?, ?it/s]Running loglikelihood requests:   5%|▌         | 1/20 [00:00<00:03,  6.12it/s]Running loglikelihood requests:  45%|████▌     | 9/20 [00:00<00:00, 33.90it/s]Running loglikelihood requests: 100%|██████████| 20/20 [00:00<00:00, 53.19it/s]
+2024-11-22:10:41:05,915 INFO     [evaluation_tracker.py:182] Saving results aggregated
+2024-11-22:10:41:05,925 INFO     [evaluation_tracker.py:258] Saving per-sample results for: mmlu_abstract_algebra
+vllm (pretrained=meta-llama/Llama-3.2-1B), gen_kwargs: (None), limit: 5.0, num_fewshot: 5, batch_size: 8
+|     Tasks      |Version|Filter|n-shot|Metric|   |Value|   |Stderr|
+|----------------|------:|------|-----:|------|---|----:|---|-----:|
+|abstract_algebra|      0|none  |     5|acc   |↑  |    0|±  |     0|
+
+[rank0]:[W1122 10:41:06.358365129 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+end: Fri Nov 22 10:41:09 UTC 2024

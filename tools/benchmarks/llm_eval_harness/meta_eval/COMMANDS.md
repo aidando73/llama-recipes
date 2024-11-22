@@ -24,6 +24,22 @@ run_nohup lm_eval --model vllm \
     --model_args pretrained=meta-llama/Llama-3.2-1B \
     --tasks mmlu \
     --num_fewshot 5 \
+    --output_path eval_results \
     --device cuda:0 \
-    --batch_size 8
+    --batch_size 8 \
+    --log_samples
+```
+
+### Just for testing
+
+```bash
+run_nohup lm_eval --model vllm \
+    --model_args pretrained=meta-llama/Llama-3.2-1B \
+    --tasks mmlu_abstract_algebra \
+    --num_fewshot 5 \
+    --output_path eval_results \
+    --device cuda:0 \
+    --batch_size 8 \
+    --log_samples \
+    --limit 10
 ```
