@@ -19,6 +19,7 @@ def get_ifeval_data(model_name, output_dir):
         "Llama-3.1-8B-Instruct",
         "Llama-3.1-70B-Instruct",
         "Llama-3.1-405B-Instruct",
+        "Llama-3.2-1B-Instruct",
     ]:
         raise ValueError(
             "Only Llama-3.1-8B-Instruct, Llama-3.1-70B-Instruct, Llama-3.1-405B-Instruct models are supported for IFEval"
@@ -172,7 +173,7 @@ def prepare_datasets(args):
     if "meta_instruct" in task_list:
         get_ifeval_data(model_name, args.work_dir)
 
-        get_math_data(model_name, args.work_dir)
+        # get_math_data(model_name, args.work_dir)
     else:
         if "meta_ifeval" in task_list:
             get_ifeval_data(model_name, args.work_dir)
@@ -214,7 +215,8 @@ if __name__ == "__main__":
         "meta-llama/Llama-3.1-8B-evals",
         "meta-llama/Llama-3.1-70B-evals",
         "meta-llama/Llama-3.1-405B-evals",
-        "meta-llama/Llama-3.2-1B-evals"
+        "meta-llama/Llama-3.2-1B-evals",
+        "meta-llama/Llama-3.2-1B-Instruct-evals",
     ]:
         raise ValueError(
             "The evals dataset is not valid, please double check the name, must use the name in the Llama 3.1 Evals collection"
