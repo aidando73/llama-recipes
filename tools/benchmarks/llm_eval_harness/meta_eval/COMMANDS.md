@@ -18,3 +18,12 @@ run_nohup lm_eval --model vllm \
   --seed 42  \
   --log_samples
 ```
+
+```bash
+run_nohup lm_eval --model vllm \
+    --model_args pretrained=meta-llama/Llama-3.2-1B \
+    --tasks mmlu \
+    --num_fewshot 5 \
+    --device cuda:0 \
+    --batch_size 8
+```
