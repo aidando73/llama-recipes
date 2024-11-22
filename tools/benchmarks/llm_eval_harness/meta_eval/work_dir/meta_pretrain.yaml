@@ -1,4 +1,3 @@
 group: meta_pretrain
 task:
-  - meta_bbh
-  - meta_mmlu_pro_pretrain
+  - meta_mmlu
