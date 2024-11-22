@@ -1,0 +1,174 @@
+2024-11-21:23:40:41,880 INFO     [__main__.py:272] Verbosity set to INFO
+2024-11-21:23:40:41,880 INFO     [__main__.py:303] Including path: /home/ubuntu/1xa100-2/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir
+2024-11-21:23:40:53,322 INFO     [__main__.py:369] Selected Tasks: ['meta_pretrain']
+2024-11-21:23:40:53,329 INFO     [evaluator.py:152] Setting random seed to 42 | Setting numpy seed to 42 | Setting torch manual seed to 42
+2024-11-21:23:40:53,329 INFO     [evaluator.py:189] Initializing vllm model, with arguments: {'pretrained': 'meta-llama/Llama-3.1-8B', 'tensor_parallel_size': 1, 'dtype': 'auto', 'gpu_memory_utilization': 0.9, 'data_parallel_size': 4, 'max_model_len': 8192, 'add_bos_token': True, 'seed': 42}
+2024-11-21:23:40:53,329 WARNING  [vllm_causallms.py:105] You might experience occasional issues with model weight downloading when data_parallel is in use. To ensure stable performance, run with data_parallel_size=1 until the weights are downloaded and cached.
+2024-11-21:23:40:53,329 INFO     [vllm_causallms.py:110] Manual batching is not compatible with data parallelism.
+Traceback (most recent call last):
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/bin/lm_eval", line 8, in <module>
+    sys.exit(cli_evaluate())
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/__main__.py", line 375, in cli_evaluate
+    results = evaluator.simple_evaluate(
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/utils.py", line 395, in _wrapper
+    return fn(*args, **kwargs)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/evaluator.py", line 221, in simple_evaluate
+    task_dict = get_task_dict(tasks, task_manager)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/tasks/__init__.py", line 444, in get_task_dict
+    task_name_from_string_dict = task_manager.load_task_or_group(
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/tasks/__init__.py", line 287, in load_task_or_group
+    collections.ChainMap(*map(self._load_individual_task_or_group, task_list))
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/tasks/__init__.py", line 270, in _load_individual_task_or_group
+    **dict(collections.ChainMap(*map(fn, subtask_list))),
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/tasks/__init__.py", line 178, in _load_individual_task_or_group
+    return load_task(task_config, task=name_or_config, group=parent_name)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/tasks/__init__.py", line 167, in load_task
+    task_object = ConfigurableTask(config=config)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/api/task.py", line 810, in __init__
+    self.download(self.config.dataset_kwargs)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/api/task.py", line 917, in download
+    self.dataset = datasets.load_dataset(
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/datasets/load.py", line 2132, in load_dataset
+    builder_instance = load_dataset_builder(
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/datasets/load.py", line 1853, in load_dataset_builder
+    dataset_module = dataset_module_factory(
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/datasets/load.py", line 1717, in dataset_module_factory
+    raise e1 from None
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/datasets/load.py", line 1701, in dataset_module_factory
+    raise DatasetNotFoundError(message) from e
+datasets.exceptions.DatasetNotFoundError: Dataset 'meta-llama/Llama-3.1-8B-evals' is a gated dataset on the Hub. You must be authenticated to access it.
+2024-11-21:23:42:25,886 INFO     [__main__.py:272] Verbosity set to INFO
+2024-11-21:23:42:25,886 INFO     [__main__.py:303] Including path: /home/ubuntu/1xa100-2/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir
+2024-11-21:23:42:37,165 INFO     [__main__.py:369] Selected Tasks: ['meta_pretrain']
+2024-11-21:23:42:37,171 INFO     [evaluator.py:152] Setting random seed to 42 | Setting numpy seed to 42 | Setting torch manual seed to 42
+2024-11-21:23:42:37,171 INFO     [evaluator.py:189] Initializing vllm model, with arguments: {'pretrained': 'meta-llama/Llama-3.1-8B', 'tensor_parallel_size': 1, 'dtype': 'auto', 'gpu_memory_utilization': 0.9, 'data_parallel_size': 4, 'max_model_len': 8192, 'add_bos_token': True, 'seed': 42}
+2024-11-21:23:42:37,171 WARNING  [vllm_causallms.py:105] You might experience occasional issues with model weight downloading when data_parallel is in use. To ensure stable performance, run with data_parallel_size=1 until the weights are downloaded and cached.
+2024-11-21:23:42:37,171 INFO     [vllm_causallms.py:110] Manual batching is not compatible with data parallelism.
+Generating latest split:   0%|          | 0/6511 [00:00<?, ? examples/s]Generating latest split:  77%|███████▋  | 5000/6511 [00:00<00:00, 44799.93 examples/s]Generating latest split: 100%|██████████| 6511/6511 [00:00<00:00, 48771.06 examples/s]
+2024-11-21:23:42:43,392 WARNING  [task.py:325] [Task: meta_bbh] has_training_docs and has_validation_docs are False, using test_docs as fewshot_docs but this is not recommended.
+Map:   0%|          | 0/6511 [00:00<?, ? examples/s]Map:  16%|█▌        | 1048/6511 [00:00<00:00, 10385.72 examples/s]Map:  36%|███▋      | 2370/6511 [00:00<00:00, 12041.76 examples/s]Map:  60%|█████▉    | 3878/6511 [00:00<00:00, 13101.69 examples/s]Map:  90%|█████████ | 5884/6511 [00:00<00:00, 12934.70 examples/s]Map: 100%|██████████| 6511/6511 [00:00<00:00, 9257.85 examples/s] 
+Map:   0%|          | 0/6511 [00:00<?, ? examples/s]Map:  18%|█▊        | 1173/6511 [00:00<00:00, 11619.53 examples/s]Map:  36%|███▋      | 2372/6511 [00:00<00:00, 11830.15 examples/s]Map:  58%|█████▊    | 3789/6511 [00:00<00:00, 12149.64 examples/s]Map:  89%|████████▉ | 5782/6511 [00:00<00:00, 11910.82 examples/s]Map: 100%|██████████| 6511/6511 [00:00<00:00, 11316.69 examples/s]
+2024-11-21:23:42:44,680 WARNING  [task.py:325] [Task: meta_bbh] has_training_docs and has_validation_docs are False, using test_docs as fewshot_docs but this is not recommended.
+Generating latest split:   0%|          | 0/12032 [00:00<?, ? examples/s]Generating latest split:  33%|███▎      | 4000/12032 [00:00<00:00, 33397.60 examples/s]Generating latest split:  66%|██████▋   | 8000/12032 [00:00<00:00, 33745.37 examples/s]Generating latest split: 100%|██████████| 12032/12032 [00:00<00:00, 35940.87 examples/s]
+2024-11-21:23:42:49,096 WARNING  [task.py:325] [Task: meta_mmlu_pro_pretrain] has_training_docs and has_validation_docs are False, using test_docs as fewshot_docs but this is not recommended.
+Map:   0%|          | 0/12032 [00:00<?, ? examples/s]Map:   8%|▊         | 1000/12032 [00:00<00:01, 9516.40 examples/s]Map:  18%|█▊        | 2111/12032 [00:00<00:00, 10432.24 examples/s]Map:  27%|██▋       | 3238/12032 [00:00<00:00, 10806.68 examples/s]Map:  40%|████      | 4823/12032 [00:00<00:00, 11452.17 examples/s]Map:  50%|████▉     | 5961/12032 [00:00<00:00, 11425.13 examples/s]Map:  65%|██████▍   | 7800/12032 [00:00<00:00, 7603.29 examples/s] Map:  74%|███████▍  | 8875/12032 [00:00<00:00, 8244.71 examples/s]Map:  83%|████████▎ | 10000/12032 [00:01<00:00, 8351.22 examples/s]Map:  93%|█████████▎| 11145/12032 [00:01<00:00, 9068.88 examples/s]Map: 100%|██████████| 12032/12032 [00:01<00:00, 9076.76 examples/s]
+Map:   0%|          | 0/12032 [00:00<?, ? examples/s]Map:   8%|▊         | 1000/12032 [00:00<00:01, 9675.89 examples/s]Map:  17%|█▋        | 2009/12032 [00:00<00:01, 9913.08 examples/s]Map:  25%|██▌       | 3037/12032 [00:00<00:00, 10075.38 examples/s]Map:  34%|███▎      | 4045/12032 [00:00<00:00, 10074.55 examples/s]Map:  48%|████▊     | 5760/12032 [00:00<00:00, 10691.70 examples/s]Map:  59%|█████▊    | 7063/12032 [00:00<00:00, 9896.43 examples/s] Map:  73%|███████▎  | 8756/12032 [00:00<00:00, 10394.72 examples/s]Map:  84%|████████▎ | 10061/12032 [00:01<00:00, 9817.66 examples/s]Map:  92%|█████████▏| 11079/12032 [00:01<00:00, 9904.74 examples/s]Map: 100%|██████████| 12032/12032 [00:01<00:00, 9785.38 examples/s]
+2024-11-21:23:42:51,665 WARNING  [task.py:325] [Task: meta_mmlu_pro_pretrain] has_training_docs and has_validation_docs are False, using test_docs as fewshot_docs but this is not recommended.
+2024-11-21:23:42:53,340 INFO     [evaluator.py:261] Setting fewshot random generator seed to 42
+2024-11-21:23:42:53,340 INFO     [evaluator.py:261] Setting fewshot random generator seed to 42
+2024-11-21:23:42:53,345 INFO     [task.py:411] Building contexts for meta_mmlu_pro_pretrain on rank 0...
+  0%|          | 0/12032 [00:00<?, ?it/s] 58%|█████▊    | 6979/12032 [00:00<00:00, 69782.58it/s]100%|██████████| 12032/12032 [00:00<00:00, 30907.71it/s]
+2024-11-21:23:42:55,270 INFO     [task.py:411] Building contexts for meta_bbh on rank 0...
+  0%|          | 0/6511 [00:00<?, ?it/s]100%|██████████| 6511/6511 [00:00<00:00, 71191.46it/s]
+2024-11-21:23:42:55,919 INFO     [evaluator.py:438] Running generate_until requests
+Running generate_until requests:   0%|          | 0/18543 [00:00<?, ?it/s]2024-11-21 23:43:37,603	INFO worker.py:1819 -- Started a local Ray instance.
+[36m(run_inference_one_model pid=12752)[0m INFO 11-21 23:43:58 config.py:350] This model supports multiple tasks: {'generate', 'embedding'}. Defaulting to 'generate'.
+[36m(run_inference_one_model pid=12756)[0m INFO 11-21 23:43:58 config.py:350] This model supports multiple tasks: {'embedding', 'generate'}. Defaulting to 'generate'.
+Traceback (most recent call last):
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/bin/lm_eval", line 8, in <module>
+    sys.exit(cli_evaluate())
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/__main__.py", line 375, in cli_evaluate
+    results = evaluator.simple_evaluate(
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/utils.py", line 395, in _wrapper
+    return fn(*args, **kwargs)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/evaluator.py", line 277, in simple_evaluate
+    results = evaluate(
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/utils.py", line 395, in _wrapper
+    return fn(*args, **kwargs)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/evaluator.py", line 449, in evaluate
+    resps = getattr(lm, reqtype)(cloned_reqs)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/models/vllm_causallms.py", line 388, in generate_until
+    cont = self._model_generate(
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/models/vllm_causallms.py", line 260, in _model_generate
+    results = ray.get(object_refs)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/ray/_private/worker.py", line 2753, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/ray/_private/worker.py", line 904, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ValueError): [36mray::run_inference_one_model()[39m (pid=12750, ip=10.19.101.220)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/models/vllm_causallms.py", line 250, in run_inference_one_model
+    llm = LLM(**model_args)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/vllm/utils.py", line 1028, in inner
+    return fn(*args, **kwargs)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/vllm/entrypoints/llm.py", line 210, in __init__
+    self.llm_engine = self.engine_class.from_engine_args(
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/vllm/engine/llm_engine.py", line 583, in from_engine_args
+    executor_class = cls._get_executor_cls(engine_config)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/vllm/engine/llm_engine.py", line 558, in _get_executor_cls
+    initialize_ray_cluster(engine_config.parallel_config)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/vllm/executor/ray_utils.py", line 296, in initialize_ray_cluster
+    raise ValueError(
+ValueError: Current node has no GPU available. current_node_resource={'accelerator_type:A100': 1.0, 'node:__internal_head__': 1.0, 'node:10.19.101.220_group_b03a7f8b253d23f806cf211801b501000000': 0.001, 'GPU_group_0_b03a7f8b253d23f806cf211801b501000000': 1.0, 'bundle_group_b03a7f8b253d23f806cf211801b501000000': 1000.0, 'CPU': 26.0, 'memory': 146055193191.0, 'node:10.19.101.220': 0.999, 'node:10.19.101.220_group_0_b03a7f8b253d23f806cf211801b501000000': 0.001, 'GPU_group_b03a7f8b253d23f806cf211801b501000000': 1.0, 'bundle_group_0_b03a7f8b253d23f806cf211801b501000000': 1000.0, 'object_store_memory': 66825459752.0}. vLLM engine cannot start without GPU. Make sure you have at least 1 GPU available in a node current_node_id='04809ff77844a8210d9ecd4b6dd8b537a44590b2d5dea5bf82c883bf' current_ip='10.19.101.220'.
+[36m(run_inference_one_model pid=12752)[0m Calling ray.init() again after it has already been called.
+[36m(run_inference_one_model pid=12750)[0m Calling ray.init() again after it has already been called.[32m [repeated 3x across cluster][0m
+[36m(run_inference_one_model pid=12753)[0m INFO 11-21 23:43:59 llm_engine.py:249] Initializing an LLM engine (v0.6.4.post1) with config: model='meta-llama/Llama-3.1-8B', speculative_config=None, tokenizer='meta-llama/Llama-3.1-8B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=8192, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='outlines'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=42, served_model_name=meta-llama/Llama-3.1-8B, num_scheduler_steps=1, chunked_prefill_enabled=False multi_step_stream_outputs=True, enable_prefix_caching=False, use_async_output_proc=True, use_cached_outputs=False, chat_template_text_format=string, mm_processor_kwargs=None, pooler_config=None)
+[36m(run_inference_one_model pid=12750)[0m INFO 11-21 23:43:58 config.py:350] This model supports multiple tasks: {'generate', 'embedding'}. Defaulting to 'generate'.[32m [repeated 2x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/user-guides/configure-logging.html#log-deduplication for more options.)[0m
+Running generate_until requests:   0%|          | 0/18543 [00:27<?, ?it/s]
+2024-11-21:23:45:39,322 INFO     [__main__.py:272] Verbosity set to INFO
+2024-11-21:23:45:39,322 INFO     [__main__.py:303] Including path: /home/ubuntu/1xa100-2/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir
+2024-11-21:23:45:50,339 INFO     [__main__.py:369] Selected Tasks: ['meta_pretrain']
+2024-11-21:23:45:50,345 INFO     [evaluator.py:152] Setting random seed to 42 | Setting numpy seed to 42 | Setting torch manual seed to 42
+2024-11-21:23:45:50,345 INFO     [evaluator.py:189] Initializing vllm model, with arguments: {'pretrained': 'meta-llama/Llama-3.1-8B', 'tensor_parallel_size': 1, 'dtype': 'auto', 'gpu_memory_utilization': 0.9, 'data_parallel_size': 4, 'max_model_len': 8192, 'add_bos_token': True, 'seed': 42}
+2024-11-21:23:45:50,345 WARNING  [vllm_causallms.py:105] You might experience occasional issues with model weight downloading when data_parallel is in use. To ensure stable performance, run with data_parallel_size=1 until the weights are downloaded and cached.
+2024-11-21:23:45:50,345 INFO     [vllm_causallms.py:110] Manual batching is not compatible with data parallelism.
+2024-11-21:23:45:56,197 WARNING  [task.py:325] [Task: meta_bbh] has_training_docs and has_validation_docs are False, using test_docs as fewshot_docs but this is not recommended.
+2024-11-21:23:45:56,208 WARNING  [task.py:325] [Task: meta_bbh] has_training_docs and has_validation_docs are False, using test_docs as fewshot_docs but this is not recommended.
+2024-11-21:23:45:58,289 WARNING  [task.py:325] [Task: meta_mmlu_pro_pretrain] has_training_docs and has_validation_docs are False, using test_docs as fewshot_docs but this is not recommended.
+2024-11-21:23:45:58,303 WARNING  [task.py:325] [Task: meta_mmlu_pro_pretrain] has_training_docs and has_validation_docs are False, using test_docs as fewshot_docs but this is not recommended.
+2024-11-21:23:45:59,835 INFO     [evaluator.py:261] Setting fewshot random generator seed to 42
+2024-11-21:23:45:59,836 INFO     [evaluator.py:261] Setting fewshot random generator seed to 42
+2024-11-21:23:45:59,840 INFO     [task.py:411] Building contexts for meta_mmlu_pro_pretrain on rank 0...
+  0%|          | 0/12032 [00:00<?, ?it/s] 40%|████      | 4859/12032 [00:00<00:00, 17302.17it/s] 99%|█████████▊| 11861/12032 [00:00<00:00, 35075.38it/s]100%|██████████| 12032/12032 [00:00<00:00, 31382.45it/s]
+2024-11-21:23:46:01,763 INFO     [task.py:411] Building contexts for meta_bbh on rank 0...
+  0%|          | 0/6511 [00:00<?, ?it/s]100%|██████████| 6511/6511 [00:00<00:00, 70868.89it/s]
+2024-11-21:23:46:02,431 INFO     [evaluator.py:438] Running generate_until requests
+Running generate_until requests:   0%|          | 0/18543 [00:00<?, ?it/s]2024-11-21 23:46:43,698	INFO worker.py:1819 -- Started a local Ray instance.
+[36m(run_inference_one_model pid=15415)[0m Calling ray.init() again after it has already been called.
+Traceback (most recent call last):
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/bin/lm_eval", line 8, in <module>
+    sys.exit(cli_evaluate())
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/__main__.py", line 375, in cli_evaluate
+    results = evaluator.simple_evaluate(
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/utils.py", line 395, in _wrapper
+    return fn(*args, **kwargs)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/evaluator.py", line 277, in simple_evaluate
+    results = evaluate(
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/utils.py", line 395, in _wrapper
+    return fn(*args, **kwargs)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/evaluator.py", line 449, in evaluate
+    resps = getattr(lm, reqtype)(cloned_reqs)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/models/vllm_causallms.py", line 388, in generate_until
+    cont = self._model_generate(
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/models/vllm_causallms.py", line 260, in _model_generate
+    results = ray.get(object_refs)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/ray/_private/auto_init_hook.py", line 21, in auto_init_wrapper
+    return fn(*args, **kwargs)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/ray/_private/client_mode_hook.py", line 103, in wrapper
+    return func(*args, **kwargs)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/ray/_private/worker.py", line 2753, in get
+    values, debugger_breakpoint = worker.get_objects(object_refs, timeout=timeout)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/ray/_private/worker.py", line 904, in get_objects
+    raise value.as_instanceof_cause()
+ray.exceptions.RayTaskError(ValueError): [36mray::run_inference_one_model()[39m (pid=15416, ip=10.19.101.220)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/models/vllm_causallms.py", line 250, in run_inference_one_model
+    llm = LLM(**model_args)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/vllm/utils.py", line 1028, in inner
+    return fn(*args, **kwargs)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/vllm/entrypoints/llm.py", line 210, in __init__
+    self.llm_engine = self.engine_class.from_engine_args(
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/vllm/engine/llm_engine.py", line 583, in from_engine_args
+    executor_class = cls._get_executor_cls(engine_config)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/vllm/engine/llm_engine.py", line 558, in _get_executor_cls
+    initialize_ray_cluster(engine_config.parallel_config)
+  File "/home/ubuntu/1xa100-2/llama-recipes/.venv/lib/python3.10/site-packages/vllm/executor/ray_utils.py", line 296, in initialize_ray_cluster
+    raise ValueError(
+ValueError: Current node has no GPU available. current_node_resource={'accelerator_type:A100': 1.0, 'CPU': 26.0, 'memory': 146458126541.0, 'node:10.19.101.220': 0.999, 'object_store_memory': 66998145474.0, 'node:__internal_head__': 1.0}. vLLM engine cannot start without GPU. Make sure you have at least 1 GPU available in a node current_node_id='ad68632d2f46bae19f93684ce218f24160bba6983c9db881bfb90522' current_ip='10.19.101.220'.
+[36m(run_inference_one_model pid=15422)[0m Calling ray.init() again after it has already been called.[32m [repeated 2x across cluster][0m
+[36m(run_inference_one_model pid=15415)[0m INFO 11-21 23:47:04 config.py:350] This model supports multiple tasks: {'embedding', 'generate'}. Defaulting to 'generate'.
+[36m(run_inference_one_model pid=15415)[0m INFO 11-21 23:47:05 llm_engine.py:249] Initializing an LLM engine (v0.6.4.post1) with config: model='meta-llama/Llama-3.1-8B', speculative_config=None, tokenizer='meta-llama/Llama-3.1-8B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=8192, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='outlines'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=42, served_model_name=meta-llama/Llama-3.1-8B, num_scheduler_steps=1, chunked_prefill_enabled=False multi_step_stream_outputs=True, enable_prefix_caching=False, use_async_output_proc=True, use_cached_outputs=False, chat_template_text_format=string, mm_processor_kwargs=None, pooler_config=None)
+[36m(run_inference_one_model pid=15422)[0m INFO 11-21 23:47:04 config.py:350] This model supports multiple tasks: {'embedding', 'generate'}. Defaulting to 'generate'.[32m [repeated 2x across cluster] (Ray deduplicates logs by default. Set RAY_DEDUP_LOGS=0 to disable log deduplication, or see https://docs.ray.io/en/master/ray-observability/user-guides/configure-logging.html#log-deduplication for more options.)[0m
+Running generate_until requests:   0%|          | 0/18543 [00:26<?, ?it/s]
