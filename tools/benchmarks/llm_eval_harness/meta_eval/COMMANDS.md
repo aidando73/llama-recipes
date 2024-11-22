@@ -30,7 +30,7 @@ run_nohup lm_eval --model vllm \
     --log_samples
 ```
 
-### Just for testing
+### For testing
 
 ```bash
 run_nohup lm_eval --model vllm \
@@ -41,5 +41,5 @@ run_nohup lm_eval --model vllm \
     --device cuda:0 \
     --batch_size 8 \
     --log_samples \
-    --limit 10
+    --limit 5
 ```
