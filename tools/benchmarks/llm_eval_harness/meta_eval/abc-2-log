@@ -1,0 +1,15 @@
+nohup: ignoring input
+start: Fri Nov 22 11:59:48 AEDT 2024
+bash: line 1: lm_eval: command not found
+end: Fri Nov 22 11:59:48 AEDT 2024
+nohup: ignoring input
+start: Fri Nov 22 12:06:27 AEDT 2024
+--model: line 1: lm_eval: command not found
+nohup: ignoring input
+start: Fri Nov 22 12:08:41 AEDT 2024
+--model: line 1: lm_eval: command not found
+nohup: ignoring input
+--model: line 1: lm_eval: command not found
+nohup: ignoring input
+bash: line 1: lm_eval: command not found
+end: Fri Nov 22 12:11:37 AEDT 2024
