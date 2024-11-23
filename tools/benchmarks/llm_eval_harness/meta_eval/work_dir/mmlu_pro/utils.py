@@ -6,7 +6,8 @@ import datasets
 
 
 def doc_to_text(doc: dict) -> str:
-    return doc["input_final_prompts"][0]
+    # Remove the space character and the answer at the end
+    return doc["input_final_prompts"][0][:-2]
 
 def process_docs(dataset: datasets.Dataset) -> datasets.Dataset:
     def _process_doc(doc: dict) -> dict:

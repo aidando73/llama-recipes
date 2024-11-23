@@ -10,6 +10,8 @@ source $STORAGE_DIR/llama-recipes/.venv/bin/activate
 huggingface-cli login
 ```
 
+```
+```
 
 ```bash
 python prepare_meta_eval.py --config_path ./eval_config.yaml
@@ -58,11 +60,18 @@ run_nohup lm_eval --model vllm \
 
 ```bash
 run_nohup lm_eval --model vllm \
-  --model_args pretrained=meta-llama/Llama-3.2-1B,tensor_parallel_size=1,dtype=auto,gpu_memory_utilization=0.9,data_parallel_size=1,max_model_len=8192,add_bos_token=True,seed=42 \
+  --model_args pretrained=meta-llama/Llama-3.2-1B,tensor_parallel_size=1,dtype=auto,gpu_memory_utilization=0.25,data_parallel_size=1,max_model_len=8192,add_bos_token=True,seed=42 \
   --tasks meta_pretrain \
   --batch_size auto \
   --output_path eval_results \
   --include_path $STORAGE_DIR/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir \
   --seed 42  \
-  --log_samples
+  --log_samples \
+  --limit 10
+```
+
+Print out latest sample
+
+```bash
+cat $(ls -1 $STORAGE_DIR/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/eval_results/meta-llama__Llama-3.2-1B/samples_meta_mmlu* | tail -n 1) | tail -n 1 | jq
 ```
