@@ -66,8 +66,7 @@ run_nohup lm_eval --model vllm \
   --output_path eval_results \
   --include_path $STORAGE_DIR/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir \
   --seed 42  \
-  --log_samples \
-  --limit 10
+  --log_samples
 ```
 
 Print out latest sample
