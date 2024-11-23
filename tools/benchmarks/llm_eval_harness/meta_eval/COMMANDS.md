@@ -60,6 +60,7 @@ run_nohup lm_eval --model vllm \
 
 ```bash
 run_nohup lm_eval --model vllm \
+<<<<<<< HEAD
   --model_args pretrained=meta-llama/Llama-3.2-1B,tensor_parallel_size=1,dtype=auto,gpu_memory_utilization=0.25,data_parallel_size=1,max_model_len=8192,add_bos_token=True,seed=42 \
   --tasks meta_pretrain \
   --batch_size auto \
@@ -73,4 +74,15 @@ Print out latest sample
 
 ```bash
 cat $(ls -1 $STORAGE_DIR/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/eval_results/meta-llama__Llama-3.2-1B/samples_meta_mmlu* | tail -n 1) | tail -n 1 | jq
+=======
+    --model_args pretrained=meta-llama/Llama-3.2-1B \
+    --tasks meta_pretrain \
+    --num_fewshot 0 \
+    --output_path eval_results \
+    --include_path /home/ubuntu/us-east-1/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir \
+    --device cuda:0 \
+    --batch_size 8 \
+    --log_samples \
+    --limit 100
+>>>>>>> 77a9277 (.)
 ```

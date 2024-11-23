@@ -2233,3 +2233,17 @@ vllm (pretrained=meta-llama/Llama-3.2-1B), gen_kwargs: (None), limit: 5.0, num_f
 
 [rank0]:[W1122 10:39:22.049238819 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
 end: Fri Nov 22 10:39:24 UTC 2024
+Fri Nov 22 10:59:24 UTC 2024 - running command: lm_eval --model vllm --model_args pretrained=meta-llama/Llama-3.2-1B --tasks meta_pretrain --num_fewshot 5 --output_path eval_results --include_path /home/ubuntu/1xa100-2/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir --device cuda:0 --batch_size 8 --log_samples --limit 5
+nohup: ignoring input
+2024-11-22:10:59:45,321 INFO     [__main__.py:272] Verbosity set to INFO
+2024-11-22:10:59:45,321 INFO     [__main__.py:303] Including path: /home/ubuntu/1xa100-2/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir
+2024-11-22:10:59:59,157 WARNING  [__main__.py:312]  --limit SHOULD ONLY BE USED FOR TESTING.REAL METRICS SHOULD NOT BE COMPUTED USING LIMIT.
+2024-11-22:10:59:59,158 ERROR    [__main__.py:347] Tasks were not found: meta_pretrain
+                                               Try `lm-eval --tasks list` for list of available tasks
+Traceback (most recent call last):
+  File "/home/ubuntu/us-east-1/llama-recipes/.venv/bin/lm_eval", line 8, in <module>
+    sys.exit(cli_evaluate())
+  File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/__main__.py", line 351, in cli_evaluate
+    raise ValueError(
+ValueError: Tasks not found: meta_pretrain. Try `lm-eval --tasks list` for list of available tasks, or '--verbosity DEBUG' to troubleshoot task registration issues.
+end: Fri Nov 22 11:00:00 UTC 2024

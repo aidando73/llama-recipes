@@ -39,3 +39,343 @@ vllm (pretrained=meta-llama/Llama-3.2-1B), gen_kwargs: (None), limit: 5.0, num_f
 
 [rank0]:[W1122 10:41:06.358365129 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
 end: Fri Nov 22 10:41:09 UTC 2024
+Fri Nov 22 11:01:04 UTC 2024 - running command: lm_eval --model vllm --model_args pretrained=meta-llama/Llama-3.2-1B --tasks meta_pretrain --num_fewshot 5 --output_path eval_results --include_path /home/ubuntu/1xa100-2/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir --device cuda:0 --batch_size 8 --log_samples --limit 5
+nohup: ignoring input
+2024-11-22:11:01:23,699 INFO     [__main__.py:272] Verbosity set to INFO
+2024-11-22:11:01:23,699 INFO     [__main__.py:303] Including path: /home/ubuntu/1xa100-2/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir
+2024-11-22:11:01:36,525 WARNING  [__main__.py:312]  --limit SHOULD ONLY BE USED FOR TESTING.REAL METRICS SHOULD NOT BE COMPUTED USING LIMIT.
+2024-11-22:11:01:36,526 ERROR    [__main__.py:347] Tasks were not found: meta_pretrain
+                                               Try `lm-eval --tasks list` for list of available tasks
+Traceback (most recent call last):
+  File "/home/ubuntu/us-east-1/llama-recipes/.venv/bin/lm_eval", line 8, in <module>
+    sys.exit(cli_evaluate())
+  File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/__main__.py", line 351, in cli_evaluate
+    raise ValueError(
+ValueError: Tasks not found: meta_pretrain. Try `lm-eval --tasks list` for list of available tasks, or '--verbosity DEBUG' to troubleshoot task registration issues.
+end: Fri Nov 22 11:01:37 UTC 2024
+Fri Nov 22 11:08:44 UTC 2024 - running command: lm_eval --model vllm --model_args pretrained=meta-llama/Llama-3.2-1B --tasks meta_pretrain --num_fewshot 5 --output_path eval_results --include_path /home/ubuntu/us-east-1/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir --device cuda:0 --batch_size 8 --log_samples --limit 5
+nohup: ignoring input
+2024-11-22:11:08:58,217 INFO     [__main__.py:272] Verbosity set to INFO
+2024-11-22:11:08:58,217 INFO     [__main__.py:303] Including path: /home/ubuntu/us-east-1/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir
+2024-11-22:11:09:10,073 WARNING  [__main__.py:312]  --limit SHOULD ONLY BE USED FOR TESTING.REAL METRICS SHOULD NOT BE COMPUTED USING LIMIT.
+2024-11-22:11:09:10,074 INFO     [__main__.py:369] Selected Tasks: ['meta_pretrain']
+2024-11-22:11:09:10,083 INFO     [evaluator.py:152] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234
+2024-11-22:11:09:10,083 INFO     [evaluator.py:189] Initializing vllm model, with arguments: {'pretrained': 'meta-llama/Llama-3.2-1B'}
+INFO 11-22 11:09:19 config.py:350] This model supports multiple tasks: {'generate', 'embedding'}. Defaulting to 'generate'.
+WARNING 11-22 11:09:19 arg_utils.py:1013] Chunked prefill is enabled by default for models with max_model_len > 32K. Currently, chunked prefill might not work with some features or models. If you encounter any issues, please disable chunked prefill by setting --enable-chunked-prefill=False.
+INFO 11-22 11:09:19 config.py:1136] Chunked prefill is enabled with max_num_batched_tokens=512.
+INFO 11-22 11:09:19 llm_engine.py:249] Initializing an LLM engine (v0.6.4.post1) with config: model='meta-llama/Llama-3.2-1B', speculative_config=None, tokenizer='meta-llama/Llama-3.2-1B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=131072, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='outlines'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=1234, served_model_name=meta-llama/Llama-3.2-1B, num_scheduler_steps=1, chunked_prefill_enabled=True multi_step_stream_outputs=True, enable_prefix_caching=False, use_async_output_proc=True, use_cached_outputs=False, chat_template_text_format=string, mm_processor_kwargs=None, pooler_config=None)
+INFO 11-22 11:09:20 selector.py:135] Using Flash Attention backend.
+INFO 11-22 11:09:20 model_runner.py:1072] Starting to load model meta-llama/Llama-3.2-1B...
+INFO 11-22 11:09:21 weight_utils.py:243] Using model weights format ['*.safetensors']
+INFO 11-22 11:09:21 weight_utils.py:288] No model.safetensors.index.json found in remote.
+Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.38s/it]
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.38s/it]
+
+INFO 11-22 11:09:22 model_runner.py:1077] Loading model weights took 2.3185 GB
+INFO 11-22 11:09:23 worker.py:232] Memory profiling results: total_gpu_memory=39.38GiB initial_memory_usage=2.82GiB peak_torch_memory=3.49GiB memory_usage_post_profile=2.84GiB non_torch_memory=0.51GiB kv_cache_size=31.44GiB gpu_memory_utilization=0.90
+INFO 11-22 11:09:23 gpu_executor.py:113] # GPU blocks: 64382, # CPU blocks: 8192
+INFO 11-22 11:09:23 gpu_executor.py:117] Maximum concurrency for 131072 tokens per request: 7.86x
+INFO 11-22 11:09:26 model_runner.py:1400] Capturing cudagraphs for decoding. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI.
+INFO 11-22 11:09:26 model_runner.py:1404] If out-of-memory error occurs during cudagraph capture, consider decreasing `gpu_memory_utilization` or switching to eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+INFO 11-22 11:09:38 model_runner.py:1518] Graph capturing finished in 11 secs, took 0.14 GiB
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/bin/lm_eval", line 8, in <module>
+[rank0]:     sys.exit(cli_evaluate())
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/__main__.py", line 375, in cli_evaluate
+[rank0]:     results = evaluator.simple_evaluate(
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/utils.py", line 395, in _wrapper
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/evaluator.py", line 221, in simple_evaluate
+[rank0]:     task_dict = get_task_dict(tasks, task_manager)
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/tasks/__init__.py", line 444, in get_task_dict
+[rank0]:     task_name_from_string_dict = task_manager.load_task_or_group(
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/tasks/__init__.py", line 287, in load_task_or_group
+[rank0]:     collections.ChainMap(*map(self._load_individual_task_or_group, task_list))
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/tasks/__init__.py", line 270, in _load_individual_task_or_group
+[rank0]:     **dict(collections.ChainMap(*map(fn, subtask_list))),
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/tasks/__init__.py", line 177, in _load_individual_task_or_group
+[rank0]:     task_config = self._get_config(name_or_config)
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/tasks/__init__.py", line 128, in _get_config
+[rank0]:     return utils.load_yaml_config(yaml_path, mode="full")
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/utils.py", line 431, in load_yaml_config
+[rank0]:     yaml_config = yaml.full_load(file)
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/yaml/__init__.py", line 105, in full_load
+[rank0]:     return load(stream, FullLoader)
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/yaml/__init__.py", line 81, in load
+[rank0]:     return loader.get_single_data()
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/yaml/constructor.py", line 51, in get_single_data
+[rank0]:     return self.construct_document(node)
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/yaml/constructor.py", line 60, in construct_document
+[rank0]:     for dummy in generator:
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/yaml/constructor.py", line 413, in construct_yaml_map
+[rank0]:     value = self.construct_mapping(node)
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/yaml/constructor.py", line 218, in construct_mapping
+[rank0]:     return super().construct_mapping(node, deep=deep)
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/yaml/constructor.py", line 143, in construct_mapping
+[rank0]:     value = self.construct_object(value_node, deep=deep)
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/yaml/constructor.py", line 100, in construct_object
+[rank0]:     data = constructor(self, node)
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/utils.py", line 415, in import_function
+[rank0]:     spec.loader.exec_module(module)
+[rank0]:   File "<frozen importlib._bootstrap_external>", line 879, in exec_module
+[rank0]:   File "<frozen importlib._bootstrap_external>", line 1016, in get_code
+[rank0]:   File "<frozen importlib._bootstrap_external>", line 1073, in get_data
+[rank0]: FileNotFoundError: [Errno 2] No such file or directory: '/home/ubuntu/us-east-1/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir/mmlu/utils.py'
+[rank0]:[W1122 11:09:40.357548248 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+end: Fri Nov 22 11:09:43 UTC 2024
+Fri Nov 22 11:11:46 UTC 2024 - running command: lm_eval --model vllm --model_args pretrained=meta-llama/Llama-3.2-1B --tasks meta_pretrain --num_fewshot 5 --output_path eval_results --include_path /home/ubuntu/us-east-1/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir --device cuda:0 --batch_size 8 --log_samples --limit 5
+nohup: ignoring input
+2024-11-22:11:11:59,682 INFO     [__main__.py:272] Verbosity set to INFO
+2024-11-22:11:11:59,682 INFO     [__main__.py:303] Including path: /home/ubuntu/us-east-1/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir
+2024-11-22:11:12:11,090 WARNING  [__main__.py:312]  --limit SHOULD ONLY BE USED FOR TESTING.REAL METRICS SHOULD NOT BE COMPUTED USING LIMIT.
+2024-11-22:11:12:11,091 INFO     [__main__.py:369] Selected Tasks: ['meta_pretrain']
+2024-11-22:11:12:11,102 INFO     [evaluator.py:152] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234
+2024-11-22:11:12:11,102 INFO     [evaluator.py:189] Initializing vllm model, with arguments: {'pretrained': 'meta-llama/Llama-3.2-1B'}
+INFO 11-22 11:12:20 config.py:350] This model supports multiple tasks: {'generate', 'embedding'}. Defaulting to 'generate'.
+WARNING 11-22 11:12:20 arg_utils.py:1013] Chunked prefill is enabled by default for models with max_model_len > 32K. Currently, chunked prefill might not work with some features or models. If you encounter any issues, please disable chunked prefill by setting --enable-chunked-prefill=False.
+INFO 11-22 11:12:20 config.py:1136] Chunked prefill is enabled with max_num_batched_tokens=512.
+INFO 11-22 11:12:20 llm_engine.py:249] Initializing an LLM engine (v0.6.4.post1) with config: model='meta-llama/Llama-3.2-1B', speculative_config=None, tokenizer='meta-llama/Llama-3.2-1B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=131072, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='outlines'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=1234, served_model_name=meta-llama/Llama-3.2-1B, num_scheduler_steps=1, chunked_prefill_enabled=True multi_step_stream_outputs=True, enable_prefix_caching=False, use_async_output_proc=True, use_cached_outputs=False, chat_template_text_format=string, mm_processor_kwargs=None, pooler_config=None)
+INFO 11-22 11:12:20 selector.py:135] Using Flash Attention backend.
+INFO 11-22 11:12:21 model_runner.py:1072] Starting to load model meta-llama/Llama-3.2-1B...
+INFO 11-22 11:12:21 weight_utils.py:243] Using model weights format ['*.safetensors']
+INFO 11-22 11:12:21 weight_utils.py:288] No model.safetensors.index.json found in remote.
+Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.95s/it]
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.96s/it]
+
+INFO 11-22 11:12:24 model_runner.py:1077] Loading model weights took 2.3185 GB
+INFO 11-22 11:12:24 worker.py:232] Memory profiling results: total_gpu_memory=39.38GiB initial_memory_usage=2.82GiB peak_torch_memory=3.49GiB memory_usage_post_profile=2.84GiB non_torch_memory=0.51GiB kv_cache_size=31.44GiB gpu_memory_utilization=0.90
+INFO 11-22 11:12:24 gpu_executor.py:113] # GPU blocks: 64382, # CPU blocks: 8192
+INFO 11-22 11:12:24 gpu_executor.py:117] Maximum concurrency for 131072 tokens per request: 7.86x
+INFO 11-22 11:12:27 model_runner.py:1400] Capturing cudagraphs for decoding. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI.
+INFO 11-22 11:12:27 model_runner.py:1404] If out-of-memory error occurs during cudagraph capture, consider decreasing `gpu_memory_utilization` or switching to eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+INFO 11-22 11:12:39 model_runner.py:1518] Graph capturing finished in 12 secs, took 0.14 GiB
+Generating latest split:   0%|          | 0/14042 [00:00<?, ? examples/s]Generating latest split:  14%|█▍        | 2000/14042 [00:00<00:00, 16159.47 examples/s]Generating latest split:  28%|██▊       | 4000/14042 [00:00<00:00, 16479.73 examples/s]Generating latest split:  57%|█████▋    | 8000/14042 [00:00<00:00, 18785.17 examples/s]Generating latest split:  71%|███████   | 10000/14042 [00:00<00:00, 18081.47 examples/s]Generating latest split: 100%|██████████| 14042/14042 [00:00<00:00, 23156.17 examples/s]Generating latest split: 100%|██████████| 14042/14042 [00:00<00:00, 20689.23 examples/s]
+2024-11-22:11:12:44,516 WARNING  [task.py:325] [Task: meta_mmlu] has_training_docs and has_validation_docs are False, using test_docs as fewshot_docs but this is not recommended.
+Map:   0%|          | 0/14042 [00:00<?, ? examples/s]Map:   7%|▋         | 1000/14042 [00:00<00:01, 8371.76 examples/s]Map:  14%|█▍        | 2000/14042 [00:00<00:01, 8960.82 examples/s]Map:  22%|██▏       | 3094/14042 [00:00<00:01, 9809.58 examples/s]Map:  34%|███▍      | 4838/14042 [00:00<00:00, 10678.40 examples/s]Map:  43%|████▎     | 6000/14042 [00:00<00:00, 10117.84 examples/s]Map:  51%|█████     | 7128/14042 [00:00<00:00, 10456.56 examples/s]Map:  63%|██████▎   | 8899/14042 [00:00<00:00, 10975.43 examples/s]Map:  71%|███████   | 10000/14042 [00:00<00:00, 10058.67 examples/s]Map:  80%|███████▉  | 11202/14042 [00:01<00:00, 10565.14 examples/s]Map:  91%|█████████▏| 12817/14042 [00:01<00:00, 11352.04 examples/s]Map: 100%|██████████| 14042/14042 [00:01<00:00, 9463.44 examples/s] Map: 100%|██████████| 14042/14042 [00:01<00:00, 10033.99 examples/s]
+Map:   0%|          | 0/14042 [00:00<?, ? examples/s]Map:   7%|▋         | 1000/14042 [00:00<00:01, 9642.88 examples/s]Map:  14%|█▍        | 2000/14042 [00:00<00:01, 9634.25 examples/s]Map:  21%|██▏       | 3000/14042 [00:00<00:01, 9759.37 examples/s]Map:  28%|██▊       | 4000/14042 [00:00<00:01, 9530.47 examples/s]Map:  36%|███▌      | 5040/14042 [00:00<00:00, 9817.01 examples/s]Map:  44%|████▎     | 6111/14042 [00:00<00:00, 10111.06 examples/s]Map:  51%|█████     | 7134/14042 [00:00<00:00, 10146.11 examples/s]Map:  62%|██████▏   | 8721/14042 [00:00<00:00, 10275.82 examples/s]Map:  69%|██████▉   | 9749/14042 [00:00<00:00, 10275.20 examples/s]Map:  79%|███████▉  | 11075/14042 [00:01<00:00, 9559.12 examples/s]Map:  87%|████████▋ | 12153/14042 [00:01<00:00, 9874.49 examples/s]Map:  99%|█████████▉| 13905/14042 [00:01<00:00, 10516.92 examples/s]Map: 100%|██████████| 14042/14042 [00:01<00:00, 9552.78 examples/s] 
+2024-11-22:11:12:47,404 WARNING  [task.py:325] [Task: meta_mmlu] has_training_docs and has_validation_docs are False, using test_docs as fewshot_docs but this is not recommended.
+2024-11-22:11:12:49,289 INFO     [evaluator.py:247] num_fewshot has been set to 0 for meta_mmlu in its config. Manual configuration will be ignored.
+2024-11-22:11:12:49,289 INFO     [evaluator.py:261] Setting fewshot random generator seed to 1234
+2024-11-22:11:12:49,292 INFO     [task.py:411] Building contexts for meta_mmlu on rank 0...
+  0%|          | 0/5 [00:00<?, ?it/s]100%|██████████| 5/5 [00:00<00:00, 34267.19it/s]
+2024-11-22:11:12:49,308 INFO     [evaluator.py:438] Running generate_until requests
+Running generate_until requests:   0%|          | 0/5 [00:00<?, ?it/s]Running generate_until requests: 100%|██████████| 5/5 [00:00<00:00, 59.17it/s]
+2024-11-22:11:12:52,769 INFO     [evaluation_tracker.py:182] Saving results aggregated
+2024-11-22:11:12:52,776 INFO     [evaluation_tracker.py:258] Saving per-sample results for: meta_mmlu
+vllm (pretrained=meta-llama/Llama-3.2-1B), gen_kwargs: (None), limit: 5.0, num_fewshot: 5, batch_size: 8
+|    Tasks    |Version|Filter|n-shot|  Metric   |   |Value|   |Stderr|
+|-------------|-------|------|-----:|-----------|---|----:|---|-----:|
+| - meta_mmlu |      1|none  |     0|exact_match|↑  |    0|±  |     0|
+|meta_pretrain|N/A    |none  |     0|exact_match|↑  |    0|±  |     0|
+
+|   Groups    |Version|Filter|n-shot|  Metric   |   |Value|   |Stderr|
+|-------------|-------|------|-----:|-----------|---|----:|---|-----:|
+|meta_pretrain|N/A    |none  |     0|exact_match|↑  |    0|±  |     0|
+
+[rank0]:[W1122 11:12:53.495766155 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+end: Fri Nov 22 11:12:56 UTC 2024
+Fri Nov 22 11:13:26 UTC 2024 - running command: lm_eval --model vllm --model_args pretrained=meta-llama/Llama-3.2-1B --tasks meta_pretrain --num_fewshot 5 --output_path eval_results --include_path /home/ubuntu/us-east-1/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir --device cuda:0 --batch_size 8 --log_samples --limit 5
+nohup: ignoring input
+2024-11-22:11:13:39,644 INFO     [__main__.py:272] Verbosity set to INFO
+2024-11-22:11:13:39,645 INFO     [__main__.py:303] Including path: /home/ubuntu/us-east-1/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir
+2024-11-22:11:13:51,434 WARNING  [__main__.py:312]  --limit SHOULD ONLY BE USED FOR TESTING.REAL METRICS SHOULD NOT BE COMPUTED USING LIMIT.
+2024-11-22:11:13:51,435 INFO     [__main__.py:369] Selected Tasks: ['meta_pretrain']
+2024-11-22:11:13:51,525 INFO     [evaluator.py:152] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234
+2024-11-22:11:13:51,525 INFO     [evaluator.py:189] Initializing vllm model, with arguments: {'pretrained': 'meta-llama/Llama-3.2-1B'}
+INFO 11-22 11:14:00 config.py:350] This model supports multiple tasks: {'generate', 'embedding'}. Defaulting to 'generate'.
+WARNING 11-22 11:14:00 arg_utils.py:1013] Chunked prefill is enabled by default for models with max_model_len > 32K. Currently, chunked prefill might not work with some features or models. If you encounter any issues, please disable chunked prefill by setting --enable-chunked-prefill=False.
+INFO 11-22 11:14:00 config.py:1136] Chunked prefill is enabled with max_num_batched_tokens=512.
+INFO 11-22 11:14:00 llm_engine.py:249] Initializing an LLM engine (v0.6.4.post1) with config: model='meta-llama/Llama-3.2-1B', speculative_config=None, tokenizer='meta-llama/Llama-3.2-1B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=131072, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='outlines'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=1234, served_model_name=meta-llama/Llama-3.2-1B, num_scheduler_steps=1, chunked_prefill_enabled=True multi_step_stream_outputs=True, enable_prefix_caching=False, use_async_output_proc=True, use_cached_outputs=False, chat_template_text_format=string, mm_processor_kwargs=None, pooler_config=None)
+INFO 11-22 11:14:01 selector.py:135] Using Flash Attention backend.
+INFO 11-22 11:14:02 model_runner.py:1072] Starting to load model meta-llama/Llama-3.2-1B...
+INFO 11-22 11:14:02 weight_utils.py:243] Using model weights format ['*.safetensors']
+INFO 11-22 11:14:02 weight_utils.py:288] No model.safetensors.index.json found in remote.
+Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.84s/it]
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.84s/it]
+
+INFO 11-22 11:14:04 model_runner.py:1077] Loading model weights took 2.3185 GB
+INFO 11-22 11:14:05 worker.py:232] Memory profiling results: total_gpu_memory=39.38GiB initial_memory_usage=2.82GiB peak_torch_memory=3.49GiB memory_usage_post_profile=2.84GiB non_torch_memory=0.51GiB kv_cache_size=31.44GiB gpu_memory_utilization=0.90
+INFO 11-22 11:14:05 gpu_executor.py:113] # GPU blocks: 64382, # CPU blocks: 8192
+INFO 11-22 11:14:05 gpu_executor.py:117] Maximum concurrency for 131072 tokens per request: 7.86x
+INFO 11-22 11:14:08 model_runner.py:1400] Capturing cudagraphs for decoding. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI.
+INFO 11-22 11:14:08 model_runner.py:1404] If out-of-memory error occurs during cudagraph capture, consider decreasing `gpu_memory_utilization` or switching to eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+INFO 11-22 11:14:20 model_runner.py:1518] Graph capturing finished in 12 secs, took 0.14 GiB
+2024-11-22:11:14:22,658 WARNING  [task.py:325] [Task: meta_mmlu] has_training_docs and has_validation_docs are False, using test_docs as fewshot_docs but this is not recommended.
+2024-11-22:11:14:22,670 WARNING  [task.py:325] [Task: meta_mmlu] has_training_docs and has_validation_docs are False, using test_docs as fewshot_docs but this is not recommended.
+2024-11-22:11:14:24,284 INFO     [evaluator.py:247] num_fewshot has been set to 0 for meta_mmlu in its config. Manual configuration will be ignored.
+2024-11-22:11:14:24,285 INFO     [evaluator.py:261] Setting fewshot random generator seed to 1234
+2024-11-22:11:14:24,287 INFO     [task.py:411] Building contexts for meta_mmlu on rank 0...
+  0%|          | 0/5 [00:00<?, ?it/s]100%|██████████| 5/5 [00:00<00:00, 33130.36it/s]
+2024-11-22:11:14:24,302 INFO     [evaluator.py:438] Running generate_until requests
+Running generate_until requests:   0%|          | 0/5 [00:00<?, ?it/s]Running generate_until requests: 100%|██████████| 5/5 [00:00<00:00, 59.23it/s]
+2024-11-22:11:14:26,826 INFO     [evaluation_tracker.py:182] Saving results aggregated
+2024-11-22:11:14:26,832 INFO     [evaluation_tracker.py:258] Saving per-sample results for: meta_mmlu
+vllm (pretrained=meta-llama/Llama-3.2-1B), gen_kwargs: (None), limit: 5.0, num_fewshot: 5, batch_size: 8
+|    Tasks    |Version|Filter|n-shot|  Metric   |   |Value|   |Stderr|
+|-------------|-------|------|-----:|-----------|---|----:|---|-----:|
+| - meta_mmlu |      1|none  |     0|exact_match|↑  |    0|±  |     0|
+|meta_pretrain|N/A    |none  |     0|exact_match|↑  |    0|±  |     0|
+
+|   Groups    |Version|Filter|n-shot|  Metric   |   |Value|   |Stderr|
+|-------------|-------|------|-----:|-----------|---|----:|---|-----:|
+|meta_pretrain|N/A    |none  |     0|exact_match|↑  |    0|±  |     0|
+
+[rank0]:[W1122 11:14:27.373305028 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+end: Fri Nov 22 11:14:30 UTC 2024
+Fri Nov 22 11:14:59 UTC 2024 - running command: lm_eval --model vllm --model_args pretrained=meta-llama/Llama-3.2-1B --tasks meta_pretrain --num_fewshot 0 --output_path eval_results --include_path /home/ubuntu/us-east-1/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir --device cuda:0 --batch_size 8 --log_samples --limit 100
+nohup: ignoring input
+2024-11-22:11:15:13,144 INFO     [__main__.py:272] Verbosity set to INFO
+2024-11-22:11:15:13,144 INFO     [__main__.py:303] Including path: /home/ubuntu/us-east-1/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir
+2024-11-22:11:15:24,679 WARNING  [__main__.py:312]  --limit SHOULD ONLY BE USED FOR TESTING.REAL METRICS SHOULD NOT BE COMPUTED USING LIMIT.
+2024-11-22:11:15:24,679 INFO     [__main__.py:369] Selected Tasks: ['meta_pretrain']
+2024-11-22:11:15:24,688 INFO     [evaluator.py:152] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234
+2024-11-22:11:15:24,688 INFO     [evaluator.py:189] Initializing vllm model, with arguments: {'pretrained': 'meta-llama/Llama-3.2-1B'}
+INFO 11-22 11:15:33 config.py:350] This model supports multiple tasks: {'generate', 'embedding'}. Defaulting to 'generate'.
+WARNING 11-22 11:15:33 arg_utils.py:1013] Chunked prefill is enabled by default for models with max_model_len > 32K. Currently, chunked prefill might not work with some features or models. If you encounter any issues, please disable chunked prefill by setting --enable-chunked-prefill=False.
+INFO 11-22 11:15:33 config.py:1136] Chunked prefill is enabled with max_num_batched_tokens=512.
+INFO 11-22 11:15:33 llm_engine.py:249] Initializing an LLM engine (v0.6.4.post1) with config: model='meta-llama/Llama-3.2-1B', speculative_config=None, tokenizer='meta-llama/Llama-3.2-1B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=131072, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='outlines'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=1234, served_model_name=meta-llama/Llama-3.2-1B, num_scheduler_steps=1, chunked_prefill_enabled=True multi_step_stream_outputs=True, enable_prefix_caching=False, use_async_output_proc=True, use_cached_outputs=False, chat_template_text_format=string, mm_processor_kwargs=None, pooler_config=None)
+INFO 11-22 11:15:34 selector.py:135] Using Flash Attention backend.
+INFO 11-22 11:15:35 model_runner.py:1072] Starting to load model meta-llama/Llama-3.2-1B...
+INFO 11-22 11:15:35 weight_utils.py:243] Using model weights format ['*.safetensors']
+INFO 11-22 11:15:35 weight_utils.py:288] No model.safetensors.index.json found in remote.
+Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.80s/it]
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.80s/it]
+
+INFO 11-22 11:15:37 model_runner.py:1077] Loading model weights took 2.3185 GB
+INFO 11-22 11:15:37 worker.py:232] Memory profiling results: total_gpu_memory=39.38GiB initial_memory_usage=2.82GiB peak_torch_memory=3.49GiB memory_usage_post_profile=2.84GiB non_torch_memory=0.51GiB kv_cache_size=31.44GiB gpu_memory_utilization=0.90
+INFO 11-22 11:15:37 gpu_executor.py:113] # GPU blocks: 64382, # CPU blocks: 8192
+INFO 11-22 11:15:37 gpu_executor.py:117] Maximum concurrency for 131072 tokens per request: 7.86x
+INFO 11-22 11:15:41 model_runner.py:1400] Capturing cudagraphs for decoding. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI.
+INFO 11-22 11:15:41 model_runner.py:1404] If out-of-memory error occurs during cudagraph capture, consider decreasing `gpu_memory_utilization` or switching to eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+INFO 11-22 11:15:52 model_runner.py:1518] Graph capturing finished in 11 secs, took 0.14 GiB
+2024-11-22:11:15:55,079 WARNING  [task.py:325] [Task: meta_mmlu] has_training_docs and has_validation_docs are False, using test_docs as fewshot_docs but this is not recommended.
+2024-11-22:11:15:55,091 WARNING  [task.py:325] [Task: meta_mmlu] has_training_docs and has_validation_docs are False, using test_docs as fewshot_docs but this is not recommended.
+2024-11-22:11:15:56,706 INFO     [evaluator.py:247] num_fewshot has been set to 0 for meta_mmlu in its config. Manual configuration will be ignored.
+2024-11-22:11:15:56,706 INFO     [evaluator.py:261] Setting fewshot random generator seed to 1234
+2024-11-22:11:15:56,709 INFO     [task.py:411] Building contexts for meta_mmlu on rank 0...
+  0%|          | 0/100 [00:00<?, ?it/s]100%|██████████| 100/100 [00:00<00:00, 70209.31it/s]
+2024-11-22:11:15:56,736 INFO     [evaluator.py:438] Running generate_until requests
+Running generate_until requests:   0%|          | 0/100 [00:00<?, ?it/s]Running generate_until requests:   1%|          | 1/100 [00:00<00:12,  7.63it/s]Running generate_until requests:   9%|▉         | 9/100 [00:00<00:02, 43.23it/s]Running generate_until requests:  17%|█▋        | 17/100 [00:00<00:01, 56.30it/s]Running generate_until requests:  25%|██▌       | 25/100 [00:00<00:01, 62.75it/s]Running generate_until requests:  33%|███▎      | 33/100 [00:00<00:01, 66.44it/s]Running generate_until requests:  41%|████      | 41/100 [00:00<00:00, 68.85it/s]Running generate_until requests:  49%|████▉     | 49/100 [00:00<00:00, 70.35it/s]Running generate_until requests:  65%|██████▌   | 65/100 [00:00<00:00, 75.19it/s]Running generate_until requests:  81%|████████  | 81/100 [00:01<00:00, 77.42it/s]Running generate_until requests:  97%|█████████▋| 97/100 [00:01<00:00, 88.06it/s]Running generate_until requests: 100%|██████████| 100/100 [00:01<00:00, 75.67it/s]
+2024-11-22:11:16:00,664 INFO     [evaluation_tracker.py:182] Saving results aggregated
+2024-11-22:11:16:00,674 INFO     [evaluation_tracker.py:258] Saving per-sample results for: meta_mmlu
+vllm (pretrained=meta-llama/Llama-3.2-1B), gen_kwargs: (None), limit: 100.0, num_fewshot: 0, batch_size: 8
+|    Tasks    |Version|Filter|n-shot|  Metric   |   |Value|   |Stderr|
+|-------------|-------|------|-----:|-----------|---|----:|---|-----:|
+| - meta_mmlu |      1|none  |     0|exact_match|↑  |    0|±  |     0|
+|meta_pretrain|N/A    |none  |     0|exact_match|↑  |    0|±  |     0|
+
+|   Groups    |Version|Filter|n-shot|  Metric   |   |Value|   |Stderr|
+|-------------|-------|------|-----:|-----------|---|----:|---|-----:|
+|meta_pretrain|N/A    |none  |     0|exact_match|↑  |    0|±  |     0|
+
+[rank0]:[W1122 11:16:01.440897740 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+end: Fri Nov 22 11:16:04 UTC 2024
+Fri Nov 22 11:17:17 UTC 2024 - running command: lm_eval --model vllm --model_args pretrained=meta-llama/Llama-3.2-1B --tasks meta_pretrain --num_fewshot 0 --output_path eval_results --include_path /home/ubuntu/us-east-1/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir --device cuda:0 --batch_size 8 --log_samples --limit 100
+nohup: ignoring input
+2024-11-22:11:17:31,179 INFO     [__main__.py:272] Verbosity set to INFO
+2024-11-22:11:17:31,179 INFO     [__main__.py:303] Including path: /home/ubuntu/us-east-1/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir
+2024-11-22:11:17:42,707 WARNING  [__main__.py:312]  --limit SHOULD ONLY BE USED FOR TESTING.REAL METRICS SHOULD NOT BE COMPUTED USING LIMIT.
+2024-11-22:11:17:42,707 INFO     [__main__.py:369] Selected Tasks: ['meta_pretrain']
+2024-11-22:11:17:42,715 INFO     [evaluator.py:152] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234
+2024-11-22:11:17:42,715 INFO     [evaluator.py:189] Initializing vllm model, with arguments: {'pretrained': 'meta-llama/Llama-3.2-1B'}
+INFO 11-22 11:17:51 config.py:350] This model supports multiple tasks: {'embedding', 'generate'}. Defaulting to 'generate'.
+WARNING 11-22 11:17:51 arg_utils.py:1013] Chunked prefill is enabled by default for models with max_model_len > 32K. Currently, chunked prefill might not work with some features or models. If you encounter any issues, please disable chunked prefill by setting --enable-chunked-prefill=False.
+INFO 11-22 11:17:51 config.py:1136] Chunked prefill is enabled with max_num_batched_tokens=512.
+INFO 11-22 11:17:51 llm_engine.py:249] Initializing an LLM engine (v0.6.4.post1) with config: model='meta-llama/Llama-3.2-1B', speculative_config=None, tokenizer='meta-llama/Llama-3.2-1B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=131072, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='outlines'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=1234, served_model_name=meta-llama/Llama-3.2-1B, num_scheduler_steps=1, chunked_prefill_enabled=True multi_step_stream_outputs=True, enable_prefix_caching=False, use_async_output_proc=True, use_cached_outputs=False, chat_template_text_format=string, mm_processor_kwargs=None, pooler_config=None)
+INFO 11-22 11:17:52 selector.py:135] Using Flash Attention backend.
+INFO 11-22 11:17:52 model_runner.py:1072] Starting to load model meta-llama/Llama-3.2-1B...
+INFO 11-22 11:17:53 weight_utils.py:243] Using model weights format ['*.safetensors']
+INFO 11-22 11:17:53 weight_utils.py:288] No model.safetensors.index.json found in remote.
+Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.84s/it]
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.84s/it]
+
+INFO 11-22 11:17:55 model_runner.py:1077] Loading model weights took 2.3185 GB
+INFO 11-22 11:17:55 worker.py:232] Memory profiling results: total_gpu_memory=39.38GiB initial_memory_usage=2.82GiB peak_torch_memory=3.49GiB memory_usage_post_profile=2.84GiB non_torch_memory=0.51GiB kv_cache_size=31.44GiB gpu_memory_utilization=0.90
+INFO 11-22 11:17:55 gpu_executor.py:113] # GPU blocks: 64382, # CPU blocks: 8192
+INFO 11-22 11:17:55 gpu_executor.py:117] Maximum concurrency for 131072 tokens per request: 7.86x
+INFO 11-22 11:17:59 model_runner.py:1400] Capturing cudagraphs for decoding. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI.
+INFO 11-22 11:17:59 model_runner.py:1404] If out-of-memory error occurs during cudagraph capture, consider decreasing `gpu_memory_utilization` or switching to eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+INFO 11-22 11:18:10 model_runner.py:1518] Graph capturing finished in 11 secs, took 0.14 GiB
+2024-11-22:11:18:13,128 WARNING  [task.py:325] [Task: meta_mmlu] has_training_docs and has_validation_docs are False, using test_docs as fewshot_docs but this is not recommended.
+2024-11-22:11:18:13,141 WARNING  [task.py:325] [Task: meta_mmlu] has_training_docs and has_validation_docs are False, using test_docs as fewshot_docs but this is not recommended.
+2024-11-22:11:18:14,758 INFO     [evaluator.py:247] num_fewshot has been set to 0 for meta_mmlu in its config. Manual configuration will be ignored.
+2024-11-22:11:18:14,758 INFO     [evaluator.py:261] Setting fewshot random generator seed to 1234
+2024-11-22:11:18:14,761 INFO     [task.py:411] Building contexts for meta_mmlu on rank 0...
+  0%|          | 0/100 [00:00<?, ?it/s]100%|██████████| 100/100 [00:00<00:00, 70825.80it/s]
+2024-11-22:11:18:14,787 INFO     [evaluator.py:438] Running generate_until requests
+Running generate_until requests:   0%|          | 0/100 [00:00<?, ?it/s]Running generate_until requests:   1%|          | 1/100 [00:00<00:13,  7.57it/s]Running generate_until requests:   9%|▉         | 9/100 [00:00<00:02, 42.95it/s]Running generate_until requests:  17%|█▋        | 17/100 [00:00<00:01, 55.94it/s]Running generate_until requests:  25%|██▌       | 25/100 [00:00<00:01, 62.54it/s]Running generate_until requests:  33%|███▎      | 33/100 [00:00<00:01, 66.16it/s]Running generate_until requests:  41%|████      | 41/100 [00:00<00:00, 68.56it/s]Running generate_until requests:  49%|████▉     | 49/100 [00:00<00:00, 70.05it/s]Running generate_until requests:  65%|██████▌   | 65/100 [00:00<00:00, 74.80it/s]Running generate_until requests:  81%|████████  | 81/100 [00:01<00:00, 76.98it/s]Running generate_until requests:  97%|█████████▋| 97/100 [00:01<00:00, 87.67it/s]Running generate_until requests: 100%|██████████| 100/100 [00:01<00:00, 75.31it/s]
+2024-11-22:11:18:18,712 INFO     [evaluation_tracker.py:182] Saving results aggregated
+2024-11-22:11:18:18,717 INFO     [evaluation_tracker.py:258] Saving per-sample results for: meta_mmlu
+vllm (pretrained=meta-llama/Llama-3.2-1B), gen_kwargs: (None), limit: 100.0, num_fewshot: 0, batch_size: 8
+|    Tasks    |Version|Filter|n-shot|  Metric   |   |Value|   |Stderr|
+|-------------|-------|------|-----:|-----------|---|----:|---|-----:|
+| - meta_mmlu |      1|none  |     0|exact_match|↑  |    0|±  |     0|
+|meta_pretrain|N/A    |none  |     0|exact_match|↑  |    0|±  |     0|
+
+|   Groups    |Version|Filter|n-shot|  Metric   |   |Value|   |Stderr|
+|-------------|-------|------|-----:|-----------|---|----:|---|-----:|
+|meta_pretrain|N/A    |none  |     0|exact_match|↑  |    0|±  |     0|
+
+[rank0]:[W1122 11:18:19.470492833 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+end: Fri Nov 22 11:18:22 UTC 2024
+Fri Nov 22 11:19:53 UTC 2024 - running command: lm_eval --model vllm --model_args pretrained=meta-llama/Llama-3.2-1B --tasks meta_pretrain --num_fewshot 0 --output_path eval_results --include_path /home/ubuntu/us-east-1/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir --device cuda:0 --batch_size 8 --log_samples --limit 100
+nohup: ignoring input
+2024-11-22:11:20:06,708 INFO     [__main__.py:272] Verbosity set to INFO
+2024-11-22:11:20:06,708 INFO     [__main__.py:303] Including path: /home/ubuntu/us-east-1/llama-recipes/tools/benchmarks/llm_eval_harness/meta_eval/work_dir
+2024-11-22:11:20:18,105 WARNING  [__main__.py:312]  --limit SHOULD ONLY BE USED FOR TESTING.REAL METRICS SHOULD NOT BE COMPUTED USING LIMIT.
+2024-11-22:11:20:18,106 INFO     [__main__.py:369] Selected Tasks: ['meta_pretrain']
+2024-11-22:11:20:18,113 INFO     [evaluator.py:152] Setting random seed to 0 | Setting numpy seed to 1234 | Setting torch manual seed to 1234
+2024-11-22:11:20:18,113 INFO     [evaluator.py:189] Initializing vllm model, with arguments: {'pretrained': 'meta-llama/Llama-3.2-1B'}
+INFO 11-22 11:20:27 config.py:350] This model supports multiple tasks: {'generate', 'embedding'}. Defaulting to 'generate'.
+WARNING 11-22 11:20:27 arg_utils.py:1013] Chunked prefill is enabled by default for models with max_model_len > 32K. Currently, chunked prefill might not work with some features or models. If you encounter any issues, please disable chunked prefill by setting --enable-chunked-prefill=False.
+INFO 11-22 11:20:27 config.py:1136] Chunked prefill is enabled with max_num_batched_tokens=512.
+INFO 11-22 11:20:27 llm_engine.py:249] Initializing an LLM engine (v0.6.4.post1) with config: model='meta-llama/Llama-3.2-1B', speculative_config=None, tokenizer='meta-llama/Llama-3.2-1B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=131072, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto, quantization_param_path=None, device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='outlines'), observability_config=ObservabilityConfig(otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=1234, served_model_name=meta-llama/Llama-3.2-1B, num_scheduler_steps=1, chunked_prefill_enabled=True multi_step_stream_outputs=True, enable_prefix_caching=False, use_async_output_proc=True, use_cached_outputs=False, chat_template_text_format=string, mm_processor_kwargs=None, pooler_config=None)
+INFO 11-22 11:20:27 selector.py:135] Using Flash Attention backend.
+INFO 11-22 11:20:28 model_runner.py:1072] Starting to load model meta-llama/Llama-3.2-1B...
+INFO 11-22 11:20:28 weight_utils.py:243] Using model weights format ['*.safetensors']
+INFO 11-22 11:20:28 weight_utils.py:288] No model.safetensors.index.json found in remote.
+Loading safetensors checkpoint shards:   0% Completed | 0/1 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.84s/it]
+Loading safetensors checkpoint shards: 100% Completed | 1/1 [00:01<00:00,  1.84s/it]
+
+INFO 11-22 11:20:30 model_runner.py:1077] Loading model weights took 2.3185 GB
+INFO 11-22 11:20:31 worker.py:232] Memory profiling results: total_gpu_memory=39.38GiB initial_memory_usage=2.82GiB peak_torch_memory=3.49GiB memory_usage_post_profile=2.84GiB non_torch_memory=0.51GiB kv_cache_size=31.44GiB gpu_memory_utilization=0.90
+INFO 11-22 11:20:31 gpu_executor.py:113] # GPU blocks: 64382, # CPU blocks: 8192
+INFO 11-22 11:20:31 gpu_executor.py:117] Maximum concurrency for 131072 tokens per request: 7.86x
+INFO 11-22 11:20:34 model_runner.py:1400] Capturing cudagraphs for decoding. This may lead to unexpected consequences if the model is not static. To run the model in eager mode, set 'enforce_eager=True' or use '--enforce-eager' in the CLI.
+INFO 11-22 11:20:34 model_runner.py:1404] If out-of-memory error occurs during cudagraph capture, consider decreasing `gpu_memory_utilization` or switching to eager mode. You can also reduce the `max_num_seqs` as needed to decrease memory usage.
+INFO 11-22 11:20:45 model_runner.py:1518] Graph capturing finished in 11 secs, took 0.14 GiB
+2024-11-22:11:20:48,696 WARNING  [task.py:325] [Task: meta_mmlu] has_training_docs and has_validation_docs are False, using test_docs as fewshot_docs but this is not recommended.
+2024-11-22:11:20:48,709 WARNING  [task.py:325] [Task: meta_mmlu] has_training_docs and has_validation_docs are False, using test_docs as fewshot_docs but this is not recommended.
+2024-11-22:11:20:50,329 INFO     [evaluator.py:247] num_fewshot has been set to 0 for meta_mmlu in its config. Manual configuration will be ignored.
+2024-11-22:11:20:50,329 INFO     [evaluator.py:261] Setting fewshot random generator seed to 1234
+2024-11-22:11:20:50,331 INFO     [task.py:411] Building contexts for meta_mmlu on rank 0...
+  0%|          | 0/100 [00:00<?, ?it/s]100%|██████████| 100/100 [00:00<00:00, 70010.08it/s]
+2024-11-22:11:20:50,360 INFO     [evaluator.py:438] Running generate_until requests
+Running generate_until requests:   0%|          | 0/100 [00:00<?, ?it/s]Running generate_until requests:   1%|          | 1/100 [00:00<00:12,  7.73it/s]Running generate_until requests:   9%|▉         | 9/100 [00:00<00:02, 43.93it/s]Running generate_until requests:  17%|█▋        | 17/100 [00:00<00:01, 57.26it/s]Running generate_until requests:  25%|██▌       | 25/100 [00:00<00:01, 64.10it/s]Running generate_until requests:  33%|███▎      | 33/100 [00:00<00:00, 67.91it/s]Running generate_until requests:  41%|████      | 41/100 [00:00<00:00, 70.46it/s]Running generate_until requests:  49%|████▉     | 49/100 [00:00<00:00, 71.98it/s]Running generate_until requests:  65%|██████▌   | 65/100 [00:00<00:00, 76.82it/s]Running generate_until requests:  81%|████████  | 81/100 [00:01<00:00, 79.13it/s]Running generate_until requests:  97%|█████████▋| 97/100 [00:01<00:00, 90.14it/s]Running generate_until requests: 100%|██████████| 100/100 [00:01<00:00, 77.33it/s]
+[rank0]: Traceback (most recent call last):
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/bin/lm_eval", line 8, in <module>
+[rank0]:     sys.exit(cli_evaluate())
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/__main__.py", line 375, in cli_evaluate
+[rank0]:     results = evaluator.simple_evaluate(
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/utils.py", line 395, in _wrapper
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/evaluator.py", line 277, in simple_evaluate
+[rank0]:     results = evaluate(
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/utils.py", line 395, in _wrapper
+[rank0]:     return fn(*args, **kwargs)
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/evaluator.py", line 548, in evaluate
+[rank0]:     task_output.calculate_aggregate_metric(bootstrap_iters=bootstrap_iters)
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/evaluator_utils.py", line 98, in calculate_aggregate_metric
+[rank0]:     self.agg_metrics[metric_key] = agg_fn(items)
+[rank0]:   File "/home/ubuntu/us-east-1/llama-recipes/.venv/lib/python3.10/site-packages/lm_eval/api/metrics.py", line 27, in mean
+[rank0]:     return sum(arr) / len(arr)
+[rank0]: TypeError: unsupported operand type(s) for +: 'int' and 'list'
+[rank0]:[W1122 11:20:52.176019419 ProcessGroupNCCL.cpp:1250] Warning: WARNING: process group has NOT been destroyed before we destruct ProcessGroupNCCL. On normal program exit, the application should call destroy_process_group to ensure that any pending NCCL operations have finished in this process. In rare cases this process can exit before this point and block the progress of another member of the process group. This constraint has always been present,  but this warning has only been added since PyTorch 2.4 (function operator())
+end: Fri Nov 22 11:20:54 UTC 2024
